@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The PNPL Game</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: hotpink;
+    }
+    .card {
+      background: #222;
+      border: 2px solid hotpink;
+      border-radius: 15px;
+      display: inline-block;
+      padding: 30px;
+      margin-top: 20px;
+      width: 300px;
+      min-height: 150px;
+      font-size: 1.2rem;
+      box-shadow: 0 0 20px hotpink;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 25px;
+      background: hotpink;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: deeppink;
+    }
+  </style>
+</head>
+<body>
+  <h1>The PNPL Game</h1>
+  <div class="card" id="card">Click "Draw a Card" to start!</div>
+  <br>
+  <button id="drawButton">Draw a Card</button>
+
+  <script>
+    const cards = [
+      "Pick two people and all three of you stand. Rub them both, below the waist simultaneously, while kissing one of them.",
+      "While kissing somebody, take their hand and guide it to a place you want them to rub.",
+      "Have your partner pick someone to give you oral.",
+      "You and your partner pick someone, double team them using your lips, tongue, and hands.",
+      "Pick two people and have them passionately kiss each other.",
+      "Pick a guy or girl to give your partner oral while you kiss them.",
+      "Close your eyes and keep them closed while everyone takes a turn kissing you with tongue.",
+      "Pick a person, give them oral. Do this for 1 minute minimum.",
+      "Give your partner a slow, teasing kiss.",
+      "Give your partner a slow, teasing kiss."
+    ];
+
+    const cardElement = document.getElementById("card");
+    const drawButton = document.getElementById("drawButton");
+
+    function drawCard() {
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      cardElement.textContent = cards[randomIndex];
+    }
+
+    drawButton.addEventListener('click', drawCard);
+  </script>
+</body>
+</html>
