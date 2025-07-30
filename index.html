@@ -11,27 +11,6 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Watermark background from GitHub raw URL */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('https://raw.githubusercontent.com/PNPLVibes/The_PNPL_Game/main/pnpl-bg.png') center center no-repeat;
-      background-size: 250px 250px; /* adjust size here */
-      opacity: 0.08; /* transparency */
-      z-index: 0;
-    }
-
-    h1, .card, button {
-      position: relative;
-      z-index: 1; /* ensure these are above the watermark */
     }
 
     h1 {
@@ -39,6 +18,7 @@
     }
 
     .card {
+      position: relative;
       background: #222;
       border: 2px solid hotpink;
       border-radius: 15px;
@@ -50,7 +30,30 @@
       font-size: 1.2rem;
       box-shadow: 0 0 20px hotpink;
       transition: transform 0.3s;
+      overflow: hidden;
     }
+
+    /* Watermark centered behind text inside card */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 150px;
+      height: 150px;
+      background: url('https://raw.githubusercontent.com/PNPLVibes/The_PNPL_Game/main/pnpl-bg.png') center center no-repeat;
+      background-size: contain;
+      opacity: 0.08;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card * {
+      position: relative;
+      z-index: 1;
+    }
+
     .card:hover {
       transform: scale(1.05);
     }
