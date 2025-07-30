@@ -11,10 +11,33 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Watermark background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('pnpl-bg.png') center center no-repeat;
+      background-size: 250px 250px; /* adjust size here */
+      opacity: 0.08; /* transparency */
+      z-index: 0;
+    }
+
+    h1, .card, button {
+      position: relative;
+      z-index: 1; /* ensure these are above the watermark */
+    }
+
     h1 {
       color: hotpink;
     }
+
     .card {
       background: #222;
       border: 2px solid hotpink;
@@ -31,6 +54,7 @@
     .card:hover {
       transform: scale(1.05);
     }
+
     button {
       margin-top: 20px;
       padding: 15px 25px;
@@ -55,7 +79,7 @@
 
   <script>
     const cards = [
-       "Pick two people and all three of you stand. Rub them both, below the waist simultaneously, while kissing one of them.",
+      "Pick two people and all three of you stand. Rub them both, below the waist simultaneously, while kissing one of them.",
       "While kissing somebody, take their hand and guide it to a place you want them to rub.",
       "Have your partner pick someone to give you oral.",
       "You and your partner pick someone, double team them using your lips, tongue, and hands.",
@@ -85,8 +109,7 @@
       "Pick someone and taste each other below the waist for 2 minutes each.",
       "Pick three people and pile up on top of each other, touching and kissing wherever you can.",
       "Pick two people to have sex with each other in front of the group for 2 minutes.",
-      "Pick two people to give you oral at the same time.",
-
+      "Pick two people to give you oral at the same time."
     ];
 
     const cardElement = document.getElementById("card");
