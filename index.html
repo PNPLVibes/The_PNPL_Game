@@ -28,7 +28,7 @@
       padding: 20px;
       margin-top: 20px;
       width: 90%;         /* responsive width */
-      max-width: 350px;   /* doesn't grow too wide on large screens */
+      max-width: 350px;   /* max width on large screens */
       min-height: 150px;
       font-size: 1.1rem;
       box-shadow: 0 0 20px hotpink;
@@ -37,17 +37,19 @@
       box-sizing: border-box;
     }
 
-    /* Watermark centered and scalable behind text inside card */
+    /* Watermark centered behind text inside card */
     .card::before {
       content: "";
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 80%;          /* scale relative to card size */
+      width: 80%;
       height: 80%;
+      min-width: 220px;   /* ensure good visibility on small screens */
+      min-height: 220px;
       background: url('https://raw.githubusercontent.com/PNPLVibes/The_PNPL_Game/main/pnpl-bg.png') center center no-repeat;
       background-size: contain;
-      opacity: 0.15;       /* less transparent */
+      opacity: 0.15;
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 0;
@@ -77,7 +79,7 @@
       background: deeppink;
     }
 
-    /* Adjust font sizes and padding on small screens */
+    /* Adjust font sizes and padding on very small screens */
     @media (max-width: 400px) {
       h1 {
         font-size: 1.5rem;
